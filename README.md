@@ -23,6 +23,8 @@ Things you may want to cover:
 
 * ...
 
+This is the first modification of this file. I want to make this rails app work asap.
+
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
