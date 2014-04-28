@@ -9,4 +9,21 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Cookbook::Application.config.secret_key_base = '25903099bfedf003fa430d94fa52447c64d380222f0cbb8ff61cd1d04d7dedcd5d4d71dc8961a278247d9bb4da2452805c336653cdd3eaa177e065008ad4346b'
+#Cookbook::Application.config.secret_key_base = '25903099bfedf003fa430d94fa52447c64d380222f0cbb8ff61cd1d04d7dedcd5d4d71dc8961a278247d9bb4da2452805c336653cdd3eaa177e065008ad4346b'
+
+require 'securerandom'
+
+def secure_token
+  token_file = Rails.root.join('.secret')
+  if File.exist?(token_file)
+    # Use the existing token.
+    File.read(token_file).chomp
+  else
+    # Generate a new token and store it in token_file.
+    token = SecureRandom.hex(64)
+    File.write(token_file, token)
+    token
+  end
+end
+
+SampleApp::Application.config.secret_key_base = secure_token
