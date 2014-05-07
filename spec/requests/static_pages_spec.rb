@@ -1,5 +1,3 @@
-
-
 require 'spec_helper'
 
 describe "Static Pages" do
@@ -19,7 +17,7 @@ describe "Static Pages" do
   		
 		it "should not have a custom page title" do
 			visit '/static_pages/home'
-			expect (page).not_to have_title('| Home')
+			expect(page).not_to have_title('| Home')
 		end
 	end
   	describe "Help Page" do
@@ -35,7 +33,7 @@ describe "Static Pages" do
   		
 		it "should not have a custom page title" do
 			visit '/static_pages/help'
-			expect (page).not_to have_title('| Help')
+			expect(page).not_to have_title('| Help')
 		end
 	end
   	describe "About Page" do
