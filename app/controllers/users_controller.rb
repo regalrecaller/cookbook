@@ -3,14 +3,23 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 	end
 
+    def index
+        @users = User.all
+    end
+
 	def new
-		@user = User.new		
+		@user = User.new
+	end
+
+	def destroy
+		@user = User.delete
 	end
 
 	def create
     	@user = User.new(user_params)    # Not the final implementation!
     	if @user.save
-      		# Handle a successful save.
+			flash[:success] = "Welcome to the Sample App!"
+      		redirect_to @user
     	else
       		render 'new'
     	end
